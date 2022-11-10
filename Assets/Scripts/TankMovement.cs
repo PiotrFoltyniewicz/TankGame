@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class TankMovement : MonoBehaviour
 {
     Rigidbody2D rb;
-    InputAction shootAction;
     InputAction moveAction;
     InputAction rotateAction;
 
@@ -22,11 +21,9 @@ public class TankMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        shootAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Shoot");
         moveAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Movement");
         rotateAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Rotation");
 
-        shootAction.performed += _ => Shoot();
 
         moveAction.performed += ctx => movement = ctx.ReadValue<float>() * moveSpeed * Time.fixedDeltaTime;
         moveAction.canceled += ctx => movement = 0;
@@ -39,11 +36,6 @@ public class TankMovement : MonoBehaviour
     {
         rb.rotation -= rotation;
         rb.MovePosition(transform.position + (transform.right * movement));
-    }
-
-    void Shoot()
-    {
-
     }
 }
 
