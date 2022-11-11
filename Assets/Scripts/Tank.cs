@@ -6,20 +6,27 @@ using UnityEngine.InputSystem;
 public class Tank : MonoBehaviour
 {
     InputAction shootAction;
-    GameObject defaultBullet;
+    GameObject choosenBullet;
     public GameObject[] bullets;
+    Transform firePoint;
 
     void Awake()
     {
+        firePoint = transform.GetChild(1);
         shootAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Shoot");
 
         shootAction.performed += _ => Shoot();
-        defaultBullet = bullets[0];
+        choosenBullet = bullets[2];
     }
 
     void Shoot()
     {
+        Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
+    }
 
+    public void GotHit()
+    {
+        Destroy(gameObject);
     }
 
 }

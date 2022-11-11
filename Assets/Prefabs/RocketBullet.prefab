@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2604784856714445627}
   - component: {fileID: 5048614953291365653}
-  - component: {fileID: 3921036002260372821}
   - component: {fileID: 8516095510305367290}
-  - component: {fileID: 5756149557916051987}
+  - component: {fileID: -1226914002499190029}
+  - component: {fileID: -3182495718380019401}
   m_Layer: 7
-  m_Name: BasicBullet
+  m_Name: RocketBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4546306473064884587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16269287, y: 0.16269287, z: 0.16269287}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 2.926, y: -0.457, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 893e272800f3c4b4387bbbc6ab2b4c1d, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3921036002260372821
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4546306473064884587}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &8516095510305367290
 Rigidbody2D:
   serializedVersion: 4
@@ -124,7 +108,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5756149557916051987
+--- !u!70 &-1226914002499190029
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546306473064884587}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.87, y: 0.008319092}
+  m_Size: {x: 0.8297909, y: 0.6395248}
+  m_Direction: 1
+--- !u!114 &-3182495718380019401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,9 +133,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4546306473064884587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9755258d9c329840a9671cfce54655f, type: 3}
+  m_Script: {fileID: 11500000, guid: c09caa09fbaf0e540a681d54b01e97fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 200
-  numberOfBounces: 2
-  bulletLifetime: 5
+  bulletSpeed: 150
+  numberOfBounces: 5
+  bulletLifetime: 10
+  distanceToFollow: 8
+  angleChangingSpeed: 180
+  timeToActivate: 1
