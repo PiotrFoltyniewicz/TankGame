@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282cb3ca5ad1d1d4c872ed36598e7660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
+  moveSpeed: 3
   rotateSpeed: 250
 --- !u!114 &5049419374027676340
 MonoBehaviour:
@@ -434,9 +434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBullet: {fileID: 4546306473064884587, guid: 5eb90dd112de2344f999b19d2dcdd4ad, type: 3}
-  bulletsLeft: 5
+  bulletsLeft: 4
   shieldObject: {fileID: 9064837557031378352, guid: 1ecefc8a1efa037488c05bfcf2eaa2c5, type: 3}
-  shieldTime: 3
+  shieldTime: 5
 --- !u!70 &3496439702819072445
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

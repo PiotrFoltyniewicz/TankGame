@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5048614953291365653}
   - component: {fileID: 3921036002260372821}
   - component: {fileID: 8516095510305367290}
-  - component: {fileID: 5756149557916051987}
+  - component: {fileID: 7772517287433345376}
   m_Layer: 7
   m_Name: DoubleBullet
   m_TagString: Bullet
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5756149557916051987
+--- !u!114 &7772517287433345376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,10 +133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4546306473064884587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9755258d9c329840a9671cfce54655f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e4a8b03ac4a57e42aa1bf4258c55922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 150
+  bulletSpeed: 200
   numberOfBounces: 2
-  bulletLifetime: 5
+  bulletLifetime: 4
   tankScript: {fileID: 0}

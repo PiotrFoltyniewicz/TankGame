@@ -11,6 +11,7 @@ public class Tank : MonoBehaviour
     Transform firePoint;
     public int bulletsLeft;
     int specialBulletsAmount;
+    string currentBullet;
 
     public GameObject shieldObject;
     GameObject shield;
@@ -24,7 +25,7 @@ public class Tank : MonoBehaviour
 
         shootAction.performed += _ => Shoot();
         choosenBullet = defaultBullet;
-        bulletsLeft = 5;
+        bulletsLeft = 4;
     }
 
     void Update()
@@ -46,17 +47,35 @@ public class Tank : MonoBehaviour
     {
         if (specialBulletsAmount > 0 && choosenBullet != defaultBullet)
         {
+            if (specialBulletsAmount <= 0) choosenBullet = defaultBullet;
             specialBulletsAmount--;
+            if(currentBullet == "Shotgun")
+            {
+                Shotgun();
+                return;
+            }
+            GameObject bullet = Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().tankScript = this;
+            return;
         }
-        else
+        else if (bulletsLeft > 0)
         {
+            currentBullet = "Basic";
             choosenBullet = defaultBullet;
+            bulletsLeft--;
+            GameObject bullet = Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().tankScript = this;
         }
-        if (choosenBullet == defaultBullet) bulletsLeft--;
-        if (choosenBullet == defaultBullet && bulletsLeft <= 0) return;
-        GameObject bullet = Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Bullet>().tankScript = this;
-        
+    }
+
+    void Shotgun()
+    {
+        for(int i = 0; i < 15; i++)
+        {
+            float angle = Random.Range(-20, 21);
+            GameObject bullet = Instantiate(choosenBullet, firePoint.position, Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + angle));
+            bullet.GetComponent<Bullet>().tankScript = this;
+        }
     }
 
     public void GotHit()
@@ -75,6 +94,7 @@ public class Tank : MonoBehaviour
         {
             choosenBullet = bulletType;
             specialBulletsAmount = bulletsAmount;
+            currentBullet = name;
         }
     }
 

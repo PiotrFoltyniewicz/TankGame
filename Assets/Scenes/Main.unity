@@ -846,10 +846,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2797852404503563035, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5049419374027676342, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
       propertyPath: m_Name
       value: Tank2
@@ -898,34 +894,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5682146225340842266, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5682146225340842266, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158305749876356388, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.0486705
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158305749876356388, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.9738884
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158305749876356388, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.7251554
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158305749876356388, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 7158305749876356388, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0164
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38e18fa5e5982d443af7bf9c66958803, type: 3}
 --- !u!1001 &5401905777185299545
@@ -935,18 +903,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3606072444235928428, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606072444235928428, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3606072444235928428, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 5401905779009237309, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
       propertyPath: m_Name
       value: Tank1
@@ -993,14 +949,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5401905779009237310, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067824372887062092, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067824372887062092, guid: 97f579f739815d543a1717be3c9aea30, type: 3}
-      propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

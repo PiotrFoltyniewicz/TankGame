@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9755258d9c329840a9671cfce54655f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 150
+  bulletSpeed: 200
   numberOfBounces: 2
-  bulletLifetime: 5
+  bulletLifetime: 4
   tankScript: {fileID: 0}

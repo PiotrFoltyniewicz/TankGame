@@ -136,9 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09caa09fbaf0e540a681d54b01e97fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 150
+  bulletSpeed: 175
   numberOfBounces: 5
   bulletLifetime: 10
+  tankScript: {fileID: 0}
   distanceToFollow: 8
-  angleChangingSpeed: 180
+  angleChangingSpeed: 240
   timeToActivate: 1

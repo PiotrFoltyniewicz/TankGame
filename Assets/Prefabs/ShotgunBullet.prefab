@@ -138,5 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 150
   numberOfBounces: 2
-  bulletLifetime: 2
+  bulletLifetime: 1.5
   tankScript: {fileID: 0}
