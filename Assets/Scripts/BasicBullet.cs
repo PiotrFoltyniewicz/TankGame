@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BasicBullet : Bullet
 {
-   
 
+    void OnDestroy()
+    {
+        tankScript.bulletsLeft++;
+    }
 }

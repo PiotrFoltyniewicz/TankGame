@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public float numberOfBounces;
     public float bulletLifetime;
     protected Rigidbody2D rb;
+    public Tank tankScript;
 
     private void Awake()
     {
