@@ -28,13 +28,22 @@ public class TankMovement : MonoBehaviour
         moveAction.performed += ctx => movement = ctx.ReadValue<float>() * moveSpeed * Time.fixedDeltaTime;
         moveAction.canceled += ctx => movement = 0;
 
-        rotateAction.performed += ctx => rotation = ctx.ReadValue<float>() * rotateSpeed * Time.fixedDeltaTime;
-        rotateAction.canceled += ctx => rotation = 0;
+        rotateAction.performed += ctx =>
+        {
+            rotation = ctx.ReadValue<float>() * rotateSpeed * Time.fixedDeltaTime;
+            isRotating = true;
+        };
+        rotateAction.canceled += ctx =>
+        {
+            rotation = 0;
+            isRotating = false;
+        };
     }
 
     void FixedUpdate()
     {
-        rb.rotation -= rotation;
+        if (isRotating) rb.rotation -= rotation;
+        else rb.angularVelocity = 0;
         rb.MovePosition(transform.position + (transform.right * movement));
     }
 }

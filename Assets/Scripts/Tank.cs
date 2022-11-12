@@ -10,7 +10,9 @@ public class Tank : MonoBehaviour
     GameObject choosenBullet;
     Transform firePoint;
     public int bulletsLeft;
+    int specialBulletsAmount;
 
+    public GameObject shieldObject;
     GameObject shield;
     public float shieldTime;
     float shieldTimeLeft;
@@ -23,23 +25,38 @@ public class Tank : MonoBehaviour
         shootAction.performed += _ => Shoot();
         choosenBullet = defaultBullet;
         bulletsLeft = 5;
-
-        shield = transform.GetChild(2).gameObject;
-        //shield.SetActive(false);
     }
 
     void Update()
     {
-        shieldTimeLeft -= Time.deltaTime;
-        //if (shieldTimeLeft < 0 && shield.activeInHierarchy) shield.SetActive(false);
+        if (shield is not null)
+        {
+            shieldTimeLeft -= Time.deltaTime;
+            shield.transform.position = transform.position;
+
+            if (shieldTimeLeft < 0 && shield.activeInHierarchy)
+            {
+                Destroy(shield);
+                shield = null;
+            }
+        }
     }
 
     void Shoot()
-    {   if (choosenBullet == defaultBullet && bulletsLeft <= 0) return;
+    {
+        if (specialBulletsAmount > 0 && choosenBullet != defaultBullet)
+        {
+            specialBulletsAmount--;
+        }
+        else
+        {
+            choosenBullet = defaultBullet;
+        }
+        if (choosenBullet == defaultBullet) bulletsLeft--;
+        if (choosenBullet == defaultBullet && bulletsLeft <= 0) return;
         GameObject bullet = Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Bullet>().tankScript = this;
-        if (choosenBullet == defaultBullet) bulletsLeft--;
-        else choosenBullet = defaultBullet;
+        
     }
 
     public void GotHit()
@@ -51,16 +68,13 @@ public class Tank : MonoBehaviour
     {
         if(name == "Shield")
         {
-            shield.SetActive(true);
+            shield = Instantiate(shieldObject, transform.position, transform.rotation);
             shieldTimeLeft = shieldTime;
-        }
-        else if(name == "Double")
-        {
-            bulletsLeft = 10;
         }
         else
         {
             choosenBullet = bulletType;
+            specialBulletsAmount = bulletsAmount;
         }
     }
 

@@ -7,7 +7,7 @@ TagManager:
   - Tank
   - Bullet
   - Wall
-  - ShieldBuff
+  - Buff
   layers:
   - Default
   - TransparentFX
@@ -18,8 +18,8 @@ TagManager:
   - Tank
   - Bullet
   - Wall
-  - 
-  - 
+  - Shield
+  - Buff
   - 
   - 
   - 
