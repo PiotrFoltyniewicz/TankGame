@@ -9,6 +9,7 @@ public class RocketBullet : Bullet
     public float distanceToFollow;
     public float angleChangingSpeed;
     public float timeToActivate;
+    private float timePassed;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class RocketBullet : Bullet
     }
     void FixedUpdate()
     {
+        timePassed += Time.deltaTime;
         timeToActivate -= Time.fixedDeltaTime;
         if (timeToActivate < 0)
         {
@@ -41,7 +43,7 @@ public class RocketBullet : Bullet
         direction.Normalize();
         float rotateAmount = Vector3.Cross(direction, transform.right).z;
         rb.angularVelocity = -angleChangingSpeed * rotateAmount;
-        //rb.SetRotation(-angleChangingSpeed * rotateAmount);
+        rb.rotation += Mathf.Sin(timePassed * 8) * 4;
         rb.velocity = transform.right * bulletSpeed * Time.fixedDeltaTime;
     }
 }
