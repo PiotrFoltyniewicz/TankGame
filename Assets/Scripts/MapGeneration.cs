@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using UnityEngine.AI;
 
 public class MapGeneration : MonoBehaviour
 {
@@ -19,26 +20,16 @@ public class MapGeneration : MonoBehaviour
     int height;
     int width;
 
+    NavMeshSurface2d navMesh;
+
     float time;
     void Awake()
     {
-    }
-
-    void Update()
-    {
-        time -= Time.deltaTime;
-        if(time < 0)
-        {
-            for(int i = 0; i < height; i++)
-            {
-                for(int j = 0; j < width; j++) Destroy(instantiatedMap[i, j]);
-            }
-            GenerateMap();
-            instantiatedMap = InstantiateMap();
-            DisableRandomWalls();
-
-            time = 2;
-        }
+        navMesh = GetComponent<NavMeshSurface2d>();
+        GenerateMap();
+        instantiatedMap = InstantiateMap();
+        DisableRandomWalls();
+        navMesh.BuildNavMeshAsync();
     }
 
     void GenerateMap()
@@ -49,12 +40,13 @@ public class MapGeneration : MonoBehaviour
         CreateBorders();
         CreateInside();
         CreateRandomHoles();
-        RemoveBlockedTiles();
+
 
         cam.transform.position = new Vector3(width, -height - 0.5f, -10);
         cam.orthographicSize = height + 1;
         
         (int, int) currentTile;
+        
         while (true)
         {
             currentTile = (Random.Range(1, height + 1), Random.Range(1, width + 1));
@@ -110,6 +102,7 @@ public class MapGeneration : MonoBehaviour
                 }
             }
         }
+        RemoveBlockedTiles();
     }
 
     void CreateRandomHoles()
@@ -146,7 +139,7 @@ public class MapGeneration : MonoBehaviour
                     instMap[i - 1, j - 1] = null;
                     continue;
                 }
-                GameObject tile = Instantiate(mapTile, new Vector2(j * 2 - 1, -i * 2 + 1), Quaternion.identity);
+                GameObject tile = Instantiate(mapTile, new Vector2(j * 2 - 1, -i * 2 + 1), Quaternion.identity, transform);
                 instMap[i - 1, j - 1] = tile;
                 placeableTiles.Add(tile.transform);
                 if (Random.Range(0, 2) == 0) tile.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f);

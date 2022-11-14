@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5867901359888533541}
   - component: {fileID: 5867901359888533540}
   - component: {fileID: 7730173185715021759}
+  - component: {fileID: 2057804773441717347}
   m_Layer: 8
   m_Name: Up
   m_TagString: Untagged
@@ -111,6 +112,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2057804773441717347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867901359888533543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5867901359891742793
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +139,7 @@ GameObject:
   - component: {fileID: 5867901359891742795}
   - component: {fileID: 5867901359891742794}
   - component: {fileID: 2899426129123163522}
+  - component: {fileID: 177577730813555426}
   m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
@@ -222,6 +240,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &177577730813555426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867901359891742793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5867901360513834922
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5867901360513834920}
   - component: {fileID: 5867901360513834921}
+  - component: {fileID: 7230648144859969726}
   m_Layer: 0
   m_Name: FloorTile
   m_TagString: Untagged
@@ -310,6 +345,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7230648144859969726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867901360513834922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5867901360918260054
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +372,7 @@ GameObject:
   - component: {fileID: 5867901360918260052}
   - component: {fileID: 5867901360918260053}
   - component: {fileID: 3258602842211713487}
+  - component: {fileID: 1329769192307910829}
   m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
@@ -421,6 +473,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1329769192307910829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867901360918260054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5867901361874931369
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +500,7 @@ GameObject:
   - component: {fileID: 5867901361874931371}
   - component: {fileID: 5867901361874931370}
   - component: {fileID: 8733350927743725091}
+  - component: {fileID: 2194711240228657743}
   m_Layer: 8
   m_Name: Down
   m_TagString: Untagged
@@ -532,3 +601,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2194711240228657743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867901361874931369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

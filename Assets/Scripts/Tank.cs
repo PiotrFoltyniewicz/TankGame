@@ -12,6 +12,7 @@ public class Tank : MonoBehaviour
     public int bulletsLeft;
     int specialBulletsAmount;
     string currentBullet;
+    public bool isBuffed;
 
     public GameObject shieldObject;
     GameObject shield;
@@ -26,6 +27,7 @@ public class Tank : MonoBehaviour
         shootAction.performed += _ => Shoot();
         choosenBullet = defaultBullet;
         bulletsLeft = 4;
+        isBuffed = false;
     }
 
     void Update()
@@ -47,7 +49,7 @@ public class Tank : MonoBehaviour
     {
         if (specialBulletsAmount > 0 && choosenBullet != defaultBullet)
         {
-            if (specialBulletsAmount <= 0) choosenBullet = defaultBullet;
+            
             specialBulletsAmount--;
             if(currentBullet == "Shotgun")
             {
@@ -56,6 +58,11 @@ public class Tank : MonoBehaviour
             }
             GameObject bullet = Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Bullet>().tankScript = this;
+            if (specialBulletsAmount <= 0)
+            {
+                choosenBullet = defaultBullet;
+                isBuffed = false;
+            }
             return;
         }
         else if (bulletsLeft > 0)
@@ -95,6 +102,7 @@ public class Tank : MonoBehaviour
             choosenBullet = bulletType;
             specialBulletsAmount = bulletsAmount;
             currentBullet = name;
+            isBuffed = true;
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RocketBullet : Bullet
 {
@@ -10,11 +11,14 @@ public class RocketBullet : Bullet
     public float angleChangingSpeed;
     public float timeToActivate;
     private float timePassed;
+    NavMeshAgent navAgent;
+
 
     private void Start()
     {
-        tanks[0] = GameObject.Find("Tank1").transform;
-        tanks[1] = GameObject.Find("Tank2").transform;
+        tanks[0] = GameObject.Find("Tank1(Clone)").transform;
+        tanks[1] = GameObject.Find("Tank2(Clone)").transform;
+        navAgent = GetComponent<NavMeshAgent>();
     }
     void FixedUpdate()
     {
@@ -39,11 +43,14 @@ public class RocketBullet : Bullet
 
     void FollowTarget()
     {
+        /*
         Vector2 direction = (Vector2)target.position - rb.position;
         direction.Normalize();
         float rotateAmount = Vector3.Cross(direction, transform.right).z;
         rb.angularVelocity = -angleChangingSpeed * rotateAmount;
         rb.rotation += Mathf.Sin(timePassed * 8) * 4;
         rb.velocity = transform.right * bulletSpeed * Time.fixedDeltaTime;
+        */
+        navAgent.SetDestination(target.position);
     }
 }
