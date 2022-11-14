@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Tank : MonoBehaviour
 {
@@ -106,4 +107,26 @@ public class Tank : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (gameObject.name.Contains("Tank1"))
+        {
+            GameLoop.redPoints++;
+        }
+        if (gameObject.name.Contains("Tank2"))
+        {
+            GameLoop.greenPoints++;
+        }
+        StartCoroutine(SlowTime());
+    }
+
+    IEnumerator SlowTime()
+    {
+        while(Time.timeScale > 0.1f)
+        {
+            Time.timeScale -= 0.1f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        //scene load
+    }
 }

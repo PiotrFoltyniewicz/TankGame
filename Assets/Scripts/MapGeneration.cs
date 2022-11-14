@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
-using UnityEngine.AI;
+//using UnityEngine.AI;
 
 public class MapGeneration : MonoBehaviour
 {
@@ -20,16 +20,16 @@ public class MapGeneration : MonoBehaviour
     int height;
     int width;
 
-    NavMeshSurface2d navMesh;
+   //NavMeshSurface2d navMesh;
 
     float time;
     void Awake()
     {
-        navMesh = GetComponent<NavMeshSurface2d>();
+        //navMesh = GetComponent<NavMeshSurface2d>();
         GenerateMap();
         instantiatedMap = InstantiateMap();
         DisableRandomWalls();
-        navMesh.BuildNavMeshAsync();
+        //navMesh.BuildNavMeshAsync();
     }
 
     void GenerateMap()
