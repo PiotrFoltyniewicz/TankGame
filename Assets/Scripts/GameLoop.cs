@@ -11,7 +11,10 @@ public class GameLoop : MonoBehaviour
     public static int redPoints;
     public TextMeshProUGUI greenText;
     public TextMeshProUGUI redText;
+    public TextMeshProUGUI countdown;
     bool ended;
+    float countdownTime;
+    public static bool started;
 
     public Transform[] tanks = new Transform[2];
 
@@ -22,10 +25,19 @@ public class GameLoop : MonoBehaviour
         Time.timeScale = 1f;
         tanks = GameObject.Find("GameManagement").GetComponent<PlacingObjects>().PlaceTanks();
         ended = false;
+        started = false;
+        countdownTime = 3;
     }
 
     void Update()
     {
+        countdownTime -= Time.deltaTime;
+        countdown.text = Mathf.Ceil(countdownTime).ToString();
+        if(countdownTime < 0 && !started)
+        {
+            countdown.gameObject.SetActive(false);
+            started = true;
+        }
         if (!tanks[0].gameObject.activeInHierarchy && tanks[1] is not null)
         {
             if (!ended)
@@ -35,6 +47,7 @@ public class GameLoop : MonoBehaviour
                 ended = true;
             }
             Time.timeScale = Mathf.Lerp(Time.timeScale, 0f, Time.deltaTime);
+            started = false;
             if (Time.timeScale < 0.3f) SceneManager.LoadScene("Main");
         }
         else if (!tanks[1].gameObject.activeInHierarchy && tanks[0] is not null)
@@ -46,19 +59,8 @@ public class GameLoop : MonoBehaviour
                 ended = true;
             }
             Time.timeScale = Mathf.Lerp(Time.timeScale, 0f, Time.deltaTime);
+            started = false;
             if (Time.timeScale < 0.3f) SceneManager.LoadScene("Main");
         }
-    }
-
-    public static IEnumerator SlowTime()
-    {
-        Debug.Log(Time.timeScale);
-        while (Time.timeScale > 0.1f)
-        {
-            Debug.Log(Time.timeScale);
-            Time.timeScale -= 0.05f;
-            yield return new WaitForSeconds(0.1f);
-        }
-        SceneManager.LoadScene("Main");
     }
 }

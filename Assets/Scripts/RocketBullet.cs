@@ -6,7 +6,6 @@ public class RocketBullet : Bullet
 {
     private Transform target;
     private Transform[] tanks = new Transform[2];
-    public float distanceToFollow;
     public float angleChangingSpeed;
     public float timeToActivate;
     private float timePassed;
@@ -24,7 +23,7 @@ public class RocketBullet : Bullet
         if (timeToActivate < 0)
         {
             target = GetTarget();
-            if (Vector2.Distance(transform.position, target.position) < distanceToFollow) FollowTarget();
+            FollowTarget();
         }
     }
 

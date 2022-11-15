@@ -17,27 +17,34 @@ public class TankMovement : MonoBehaviour
     float movement;
     float rotation;
 
+    bool setInputs = false;
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         moveAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Movement");
         rotateAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Rotation");
-
-
-        moveAction.performed += ctx => movement = ctx.ReadValue<float>() * moveSpeed * Time.fixedDeltaTime;
-        moveAction.canceled += ctx => movement = 0;
-
-        rotateAction.performed += ctx =>
+    }
+    private void Update()
+    {
+        if (GameLoop.started && !setInputs)
         {
-            rotation = ctx.ReadValue<float>() * rotateSpeed * Time.fixedDeltaTime;
-            isRotating = true;
-        };
-        rotateAction.canceled += ctx =>
-        {
-            rotation = 0;
-            isRotating = false;
-        };
+            moveAction.performed += ctx => movement = ctx.ReadValue<float>() * moveSpeed * Time.fixedDeltaTime;
+            moveAction.canceled += ctx => movement = 0;
+
+            rotateAction.performed += ctx =>
+            {
+                rotation = ctx.ReadValue<float>() * rotateSpeed * Time.fixedDeltaTime;
+                isRotating = true;
+            };
+            rotateAction.canceled += ctx =>
+            {
+                rotation = 0;
+                isRotating = false;
+            };
+            setInputs = true;
+        }
     }
 
     void FixedUpdate()

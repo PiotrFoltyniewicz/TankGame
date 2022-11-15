@@ -19,6 +19,7 @@ public class PlacingObjects : MonoBehaviour
 
     void Update()
     {
+        if (!GameLoop.started) return;
         buffTimeLeft -= Time.deltaTime;
         if(buffTimeLeft < 0)
         {

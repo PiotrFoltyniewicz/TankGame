@@ -14,18 +14,18 @@ public class Tank : MonoBehaviour
     int specialBulletsAmount;
     string currentBullet;
     public bool isBuffed;
+    public GameObject deathEffect;
 
     public GameObject shieldObject;
     GameObject shield;
     public float shieldTime;
     float shieldTimeLeft;
+    bool setInputs = false;
 
     void Awake()
     {
         firePoint = transform.GetChild(1);
         shootAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Shoot");
-
-        shootAction.performed += _ => Shoot();
         choosenBullet = defaultBullet;
         bulletsLeft = 4;
         isBuffed = false;
@@ -33,6 +33,11 @@ public class Tank : MonoBehaviour
 
     void Update()
     {
+        if (GameLoop.started && !setInputs)
+        {
+            shootAction.performed += _ => Shoot();
+            setInputs = true;
+        }
         if (shield is not null)
         {
             shieldTimeLeft -= Time.deltaTime;
@@ -55,6 +60,11 @@ public class Tank : MonoBehaviour
             if(currentBullet == "Shotgun")
             {
                 Shotgun();
+                if (specialBulletsAmount <= 0)
+                {
+                    choosenBullet = defaultBullet;
+                    isBuffed = false;
+                }
                 return;
             }
             GameObject bullet = Instantiate(choosenBullet, firePoint.position, firePoint.rotation);
@@ -88,6 +98,7 @@ public class Tank : MonoBehaviour
 
     public void GotHit()
     {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
     }
 
@@ -95,7 +106,7 @@ public class Tank : MonoBehaviour
     {
         if(name == "Shield")
         {
-            shield = Instantiate(shieldObject, transform.position, transform.rotation);
+            if (shield is null) shield = Instantiate(shieldObject, transform.position, transform.rotation);
             shieldTimeLeft = shieldTime;
         }
         else
