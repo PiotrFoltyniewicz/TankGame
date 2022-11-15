@@ -11,11 +11,10 @@ public class PlacingObjects : MonoBehaviour
     Transform[] placedTanks = new Transform[2];
     public float buffTime;
     float buffTimeLeft;
-    void Start()
+    void Awake()
     {
         mapGen = GetComponent<MapGeneration>();
         buffTimeLeft = buffTime;
-        PlaceTanks();
     }
 
     void Update()
@@ -28,7 +27,7 @@ public class PlacingObjects : MonoBehaviour
         }
     }
 
-    void PlaceTanks()
+    public Transform[] PlaceTanks()
     {
         Transform tankTile1 = mapGen.placeableTiles[Random.Range(0, mapGen.placeableTiles.Count)];
         placedTanks[0] = Instantiate(tanks[0], tankTile1.position, Quaternion.Euler(0, 0, Random.Range(0, 360))).transform;
@@ -43,6 +42,7 @@ public class PlacingObjects : MonoBehaviour
         while (Vector2.Distance(tankTile1.position, tankTile2.position) < 6 && k < 1000);
 
         placedTanks[1] = Instantiate(tanks[1], tankTile2.position, Quaternion.Euler(0, 0, Random.Range(0, 360))).transform;
+        return placedTanks;
     }
 
     void PlaceBuff()

@@ -88,7 +88,7 @@ public class Tank : MonoBehaviour
 
     public void GotHit()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void GetBuff(string name, GameObject bulletType = null, int bulletsAmount = 0)
@@ -105,28 +105,5 @@ public class Tank : MonoBehaviour
             currentBullet = name;
             isBuffed = true;
         }
-    }
-
-    private void OnDestroy()
-    {
-        if (gameObject.name.Contains("Tank1"))
-        {
-            GameLoop.redPoints++;
-        }
-        if (gameObject.name.Contains("Tank2"))
-        {
-            GameLoop.greenPoints++;
-        }
-        StartCoroutine(SlowTime());
-    }
-
-    IEnumerator SlowTime()
-    {
-        while(Time.timeScale > 0.1f)
-        {
-            Time.timeScale -= 0.1f;
-            yield return new WaitForSeconds(0.05f);
-        }
-        //scene load
     }
 }
