@@ -24,7 +24,7 @@ public class Tank : MonoBehaviour
 
     void Awake()
     {
-        firePoint = transform.GetChild(1);
+        firePoint = transform.GetChild(0);
         shootAction = GetComponent<PlayerInput>().currentActionMap.FindAction("Shoot");
         choosenBullet = defaultBullet;
         bulletsLeft = 4;
@@ -117,4 +117,14 @@ public class Tank : MonoBehaviour
             isBuffed = true;
         }
     }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Bullet"))
+        {
+            GotHit();
+            Destroy(collision.gameObject);
+        }
+    }
+    */
 }

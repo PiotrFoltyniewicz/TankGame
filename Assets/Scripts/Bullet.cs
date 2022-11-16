@@ -9,9 +9,13 @@ public class Bullet : MonoBehaviour
     public float bulletLifetime;
     protected Rigidbody2D rb;
     public Tank tankScript;
+    AudioSource audio;
 
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
+        gameObject.layer = 12;
+        Invoke("ActivateCollider", 0.05f);
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * bulletSpeed * Time.fixedDeltaTime;
     }
@@ -23,6 +27,11 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void ActivateCollider()
+    {
+        gameObject.layer = 7;
+    }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.CompareTag("Tank"))
@@ -31,12 +40,6 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        /*
-        if(collision.transform.CompareTag("Wall") && numberOfBounces > 0)
-        {
-            numberOfBounces--;
-            return;
-        }
-        */
+        audio.Play();
     }
 }
