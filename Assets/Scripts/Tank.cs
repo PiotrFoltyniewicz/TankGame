@@ -62,6 +62,14 @@ public class Tank : MonoBehaviour
                 Shotgun();
                 if (specialBulletsAmount <= 0)
                 {
+                    if (gameObject.name == "Tank1(Clone)" && name != "Shield")
+                    {
+                        GameObject.Find("GreenBuffIcon").GetComponent<BuffIcon>().HideIcon();
+                    }
+                    else if (name != "Shield")
+                    {
+                        GameObject.Find("RedBuffIcon").GetComponent<BuffIcon>().HideIcon();
+                    }
                     choosenBullet = defaultBullet;
                     isBuffed = false;
                 }
@@ -71,6 +79,14 @@ public class Tank : MonoBehaviour
             bullet.GetComponent<Bullet>().tankScript = this;
             if (specialBulletsAmount <= 0)
             {
+                if (gameObject.name == "Tank1(Clone)" && name != "Shield")
+                {
+                    GameObject.Find("GreenBuffIcon").GetComponent<BuffIcon>().HideIcon();
+                }
+                else if (name != "Shield")
+                {
+                    GameObject.Find("RedBuffIcon").GetComponent<BuffIcon>().HideIcon();
+                }
                 choosenBullet = defaultBullet;
                 isBuffed = false;
             }
@@ -116,7 +132,17 @@ public class Tank : MonoBehaviour
             currentBullet = name;
             isBuffed = true;
         }
+
+        if(gameObject.name == "Tank1(Clone)" && name != "Shield")
+        {
+            GameObject.Find("GreenBuffIcon").GetComponent<BuffIcon>().ShowIcon(name);
+        }
+        else if (name != "Shield")
+        {
+            GameObject.Find("RedBuffIcon").GetComponent<BuffIcon>().ShowIcon(name);
+        }
     }
+
     /*
     private void OnTriggerEnter2D(Collider2D collision)
     {

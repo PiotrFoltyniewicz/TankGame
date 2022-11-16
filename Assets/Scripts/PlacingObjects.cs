@@ -60,7 +60,7 @@ public class PlacingObjects : MonoBehaviour
             buffTile = mapGen.placeableTiles[Random.Range(0, mapGen.placeableTiles.Count)];
             k++;
         } 
-        while (Vector2.Distance(placedTanks[0].position, buffTile.position) < 3 && Vector2.Distance(placedTanks[1].position, buffTile.position) < 3 && k < 1000);
+        while ((Vector2.Distance(placedTanks[0].position, buffTile.position) < 3 || Vector2.Distance(placedTanks[1].position, buffTile.position) < 3) && k < 1000);
         Instantiate(buffsObj[Random.Range(0, buffsObj.Length)], new Vector2(buffTile.position.x + Random.Range(-0.5f,0.5f), buffTile.position.y + Random.Range(-0.5f, 0.5f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
     }
 }

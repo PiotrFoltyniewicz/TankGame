@@ -9,6 +9,7 @@ public class MenuScript : MonoBehaviour
     {
         GameLoop.redPoints = 0;
         GameLoop.greenPoints = 0;
+        DontDestroyOnLoad(GameObject.Find("BackgroundMusic"));
     }
 
     public void StartGame()
